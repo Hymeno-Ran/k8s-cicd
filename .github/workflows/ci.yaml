@@ -1,0 +1,34 @@
+name: CI-CD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Login DockerHub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASS }}
+
+    - name: Build & Push Image
+      run: |
+        docker build -t your-dockerhub/demo:${{ github.sha }} .
+        docker push your-dockerhub/demo:${{ github.sha }}
+
+    - name: Update manifest
+      run: |
+        sed -i "s|image: .*|image: your-dockerhub/demo:${{ github.sha }}|g" k8s/deployment.yaml
+
+    - name: Commit & Push
+      run: |
+        git add .
+        git commit -m "update image"
+        git push
