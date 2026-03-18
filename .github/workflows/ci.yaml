@@ -20,6 +20,7 @@ jobs:
 
     - name: Build & Push Image
       run: |
+        echo ${{ secrets.DOCKER_PASS }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
         docker build -t your-dockerhub/demo:${{ github.sha }} .
         docker push your-dockerhub/demo:${{ github.sha }}
 
