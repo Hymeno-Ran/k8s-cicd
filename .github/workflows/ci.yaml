@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Test Environment
+      run: | 
+        echo "Testing CI/CD pipeline for Kubernetes deployment"
+        echo ${{ secrets.DOCKER_PASS }} 
+
     - name: Checkout
       uses: actions/checkout@v3
 
