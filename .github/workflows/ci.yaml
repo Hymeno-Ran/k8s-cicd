@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: Test Environment
       run: | 
-        echo "Testing CI/CD pipeline for Kubernetes deployment"
+        echo "Testing CI/CD pipeline for Kubernetes deployments"
         echo ${{ secrets.DOCKER_PASS }} 
 
     - name: Checkout
