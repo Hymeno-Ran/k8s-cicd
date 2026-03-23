@@ -38,6 +38,8 @@ jobs:
 
     - name: Commit & Push
       run: |
+        git config --global user.name "Hymeno-Ran"
+        git config --global user.email "jaydenthai16@gmail.com"
         git add .
         git commit -m "update image"
         git push
