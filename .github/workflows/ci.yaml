@@ -27,12 +27,12 @@ jobs:
       run: |
         echo ${{ secrets.DOCKER_PASS }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
         # echo Erica@030720 | docker login -u Erica37 --password-stdin
-        docker build -t your-dockerhub/demo:${{ github.sha }} .
-        docker push your-dockerhub/demo:${{ github.sha }}
+        docker build -t erica37/cicd-k8s:${{ github.sha }} .
+        docker push erica37/cicd-k8s:${{ github.sha }}
 
     - name: Update manifest
       run: |
-        sed -i "s|image: .*|image: your-dockerhub/demo:${{ github.sha }}|g" k8s/deployment.yaml
+        sed -i "s|image: .*|image: erica37/cicd-k8s:${{ github.sha }}|g" k8s/deployment.yaml
 
     - name: Commit & Push
       run: |
