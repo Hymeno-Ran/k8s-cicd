@@ -47,5 +47,5 @@ jobs:
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
         git add .
-        git commit -m "update image to ${{ SHORT_SHA}}"
+        git commit -m "update image to ${{ env.SHORT_SHA}}"
         git push
