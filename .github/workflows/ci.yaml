@@ -39,10 +39,13 @@ jobs:
       run: |
         sed -i "s|image: .*|image: erica37/cicd-k8s:${{ github.sha }}|g" k8s/deployment.yaml
 
+    - name: Set short SHA
+      run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
     - name: Commit & Push
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
         git add .
-        git commit -m "update image to ${{ github.sha::7}}"
+        git commit -m "update image to ${{ SHORT_SHA}}"
         git push
