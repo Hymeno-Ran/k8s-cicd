@@ -27,7 +27,9 @@ jobs:
       run: |
         echo ${{ secrets.DOCKER_PASS }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
         # echo Erica@030720 | docker login -u Erica37 --password-stdin
+        echo "Start Building Docker Image"
         docker build -t erica37/cicd-k8s:${{ github.sha }} .
+        echo "Start Pushing Docker Image"
         docker push erica37/cicd-k8s:${{ github.sha }}
 
     - name: Update manifest
