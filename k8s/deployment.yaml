@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: nginx:latest
+        image: erica37/cicd-k8s:9090702aab2395a212110bd0db8fb193f88720d7
         # imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
