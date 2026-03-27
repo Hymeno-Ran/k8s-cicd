@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: erica37/cicd-k8s:60722ed7e235214dced99a54d94f614d571f7727
+        image: erica37/cicd-k8s:8b9af58f6f3d2d3036fc50739d7c5883d5308a66
         # imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
